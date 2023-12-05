@@ -56,7 +56,7 @@ Bitcoin Address for Donations: `bc1pqgxx27urevpvtxrnfdahgfxcn55vhv63sv7v9xujy3mr
 
 ## Support
 
-For support, feature requests, or bug reports, please open an issue on the [GitHub repository page](https://github.com/your-repository/Inscription-Helper/issues).
+For support, feature requests, or bug reports, please open an issue on the [GitHub repository page](https://github.com/jerryfane/inscription-helper/issues).
 
 ## License
 
