@@ -1,0 +1,1 @@
+window.InscriptionHelperPresent =  true;

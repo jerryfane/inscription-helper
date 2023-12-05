@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inscription Helper - Configuration</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 15px;
+      margin: 0;
+      width: 400px; 
+      height: 200px; 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; 
+      box-sizing: border-box; 
+    }
+    h1 {
+      font-size: 1.2em;
+      margin: 0;
+      text-align: center;
+    }
+    input {
+        width: calc(100% - 5px);
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box; 
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .footer {
+      font-size: 0.8em;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+    <h1>Inscription Helper - Configuration</h1>
+    <br>
+    <label for="gateway">Enter IPFS Gateway:</label> <!-- Title before the form -->
+    <input type="text" id="gateway" placeholder="https://ipfs.io/ipfs/" />
+    <button id="save">Save</button>
+  
+    <div class="footer">
+        If this tool is helpful, consider donating:<br>
+        <strong>BTC Address:</strong> bc1pkt6wfx94hasqjravglqpay4xx0767hkuvd8kvznlrfdlqyj2fjusk0x0cy
+    </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
