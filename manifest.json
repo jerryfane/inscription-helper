@@ -1,6 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Inscription Helper",
+    "description": "Inscription Helper is designed to seamlessly load IPFS files directly from Bitcoin Ordinals inscriptions.",
     "version": "0.1",
     "permissions": ["activeTab", "scripting", "storage"],
     "background": {
@@ -20,10 +21,6 @@
         "resources": ["/src/js/inject.js"],
         "matches": ["<all_urls>"]
       }
-    ],
-    "host_permissions": [
-      "http://*/*",
-      "https://*/*"
     ]
   }
   
