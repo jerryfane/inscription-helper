@@ -34,16 +34,17 @@ function handleMutations(mutations) {
 
 function setupInscribeButtonListener() {
     const inscribeButton = document.getElementById('inscribe-button');
-    if (inscribeButton) {
-        console.log('Inscribe button found:', inscribeButton);
+    const verifyButton = document.getElementById('verify-button');
+    if (inscribeButton && verifyButton) {
         inscribeButton.addEventListener('click', handleInscribeClick);
+        verifyButton.addEventListener('click', handleInscribeClick);
     } else {
-        console.log('Inscribe button not found');
+        console.log('Inscribe or Verify button not found');
     }
 }
 
 function handleInscribeClick() {
-    console.log('Inscribe clicked');
+    console.log('Inscribe or Verify clicked');
     const modalImageSrc = document.querySelector('#modal-image-container img').src;
 
     // Create a new Image object
