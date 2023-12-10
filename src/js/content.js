@@ -47,47 +47,38 @@ function handleInscribeClick() {
     console.log('Inscribe or Verify clicked');
     const modalImageSrc = document.querySelector('#modal-image-container img').src;
 
-    // Create a new Image object
-    const image = new Image();
-    image.crossOrigin = 'anonymous'; // Set cross-origin to anonymous
-    image.onload = function() {
-        // Image is loaded, now we can convert it to base64
-        convertImageToBase64(image)
-            .then(base64data => {
-                // Inject the base64 data into the page
-                window.postMessage({
-                    type: 'SET_BASE64_DATA',
-                    base64data: base64data
-                }, '*');
+    getImageAsBase64(modalImageSrc)
+        .then(base64data => {
+            // Inject the base64 data into the page
+            window.postMessage({
+                type: 'SET_BASE64_DATA',
+                base64data: base64data
+            }, '*');
 
-                console.log('window.currentBase64data has been set in the page context.');
-            })
-            .catch(error => {
-                console.error('Error converting image to base64:', error);
-            });
-    };
-    image.onerror = function() {
-        console.error('Error loading image with CORS enabled.');
-    };
-    // Set the source to the image to trigger the load
-    image.src = modalImageSrc;
+            console.log('window.currentBase64data has been set in the page context.');
+        })
+        .catch(error => {
+            console.error('Error fetching image:', error);
+        });
 }
 
-async function convertImageToBase64(imgElement) {
-    return new Promise((resolve, reject) => {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = imgElement.naturalWidth || imgElement.width;
-        canvas.height = imgElement.naturalHeight || imgElement.height;
-        try {
-            ctx.drawImage(imgElement, 0, 0, canvas.width, canvas.height);
-            resolve(canvas.toDataURL());
-        } catch (error) {
-            reject(error); // Reject the promise if drawing the image fails
+async function getImageAsBase64(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
-    });
+        const blob = await response.blob();
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result); // Base64 string
+            reader.onerror = reject;
+            reader.readAsDataURL(blob);
+        });
+    } catch (error) {
+        console.error('Error fetching image:', error);
+    }
 }
-
 
 // Existing code to inject script and create observer
 var s = document.createElement('script');
